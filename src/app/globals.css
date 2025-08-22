@@ -5,7 +5,7 @@
 @layer base {
   body {
     @apply bg-gray-900 text-gray-100;
-    font-family: var(--font-poppins), system-ui, sans-serif;
+    font-family: var(--font-playfair), Georgia, serif;
     scroll-behavior: smooth;
   }
 
@@ -13,8 +13,8 @@
     scroll-behavior: smooth;
   }
 
-  .font-poppins {
-    font-family: var(--font-poppins), system-ui, sans-serif;
+  .font-playfair {
+    font-family: var(--font-playfair), Georgia, serif;
   }
 }
 

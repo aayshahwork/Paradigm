@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
-const poppins = Poppins({ 
+const playfair = Playfair_Display({ 
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-poppins'
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-playfair'
 })
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} ${poppins.variable}`}>{children}</body>
+      <body className={`${inter.className} ${playfair.variable}`}>{children}</body>
     </html>
   )
 }

@@ -33,7 +33,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight text-white font-poppins"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight text-white font-playfair tracking-normal"
           >
             <span className="text-blue-400">Paradigm</span> Consulting
           </motion.h1>
@@ -43,7 +43,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-200 mb-12 leading-relaxed max-w-3xl font-poppins"
+            className="text-lg md:text-xl text-gray-200 mb-12 leading-relaxed max-w-3xl font-playfair"
           >
             Providing top-tier strategic consulting services to companies since 2003. The premier consulting organization at UC Berkeley.
           </motion.p>
@@ -56,7 +56,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToServices}
-            className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-sm font-medium text-sm uppercase tracking-wider hover:bg-white hover:text-gray-900 transition-all duration-300 font-poppins"
+            className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-sm font-medium text-sm uppercase tracking-wider hover:bg-white hover:text-gray-900 transition-all duration-300 font-playfair"
           >
             Learn More →
           </motion.button>

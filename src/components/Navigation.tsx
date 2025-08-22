@@ -51,20 +51,20 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             <motion.button
               whileHover={{ scale: 1.05 }}
-              className="text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium text-sm uppercase tracking-wide font-poppins"
+              className="text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium text-sm uppercase tracking-wide font-playfair"
             >
               ABOUT
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
-              className="text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium text-sm uppercase tracking-wide font-poppins"
+              className="text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium text-sm uppercase tracking-wide font-playfair"
             >
               SERVICES
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-sm font-medium text-sm uppercase tracking-wide transition-all duration-200 font-poppins"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-sm font-medium text-sm uppercase tracking-wide transition-all duration-200 font-playfair"
             >
               APPLY
             </motion.button>

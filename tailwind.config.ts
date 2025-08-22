@@ -54,6 +54,12 @@ const config: Config = {
       backdropBlur: {
         xs: '2px',
       },
+      letterSpacing: {
+        'logo': '0.25em',
+        'wide': '0.1em',
+        'wider': '0.15em',
+        'widest': '0.2em',
+      },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
