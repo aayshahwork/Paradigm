@@ -5,15 +5,37 @@ import Image from 'next/image'
 
 const Services = () => {
   return (
-    <section id="services" className="section-padding bg-white">
-      <div className="container-custom">
+    <section id="services" className="px-4 sm:px-6 lg:px-8 py-8 lg:py-12 bg-gradient-to-br from-blue-50 via-slate-50 to-gray-100 relative">
+      {/* Decorative background element */}
+      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-blue-100/30 to-transparent"></div>
+      
+      <div className="container-custom relative z-10">
+        {/* Section Divider */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="flex justify-center mb-16"
+        >
+          <div className="flex items-center space-x-4">
+            <div className="w-16 h-px bg-gradient-to-r from-transparent to-blue-400"></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <div className="w-8 h-px bg-blue-400"></div>
+            <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="w-8 h-px bg-blue-400"></div>
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <div className="w-16 h-px bg-gradient-to-l from-transparent to-blue-400"></div>
+          </div>
+        </motion.div>
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -22,21 +44,39 @@ const Services = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 font-playfair"
           >
-            Select <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Projects</span>
+            Our <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Services</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="text-xl text-gray-600 max-w-4xl mx-auto font-playfair"
+            className="text-xl text-gray-600 max-w-4xl mx-auto font-nunito mb-8"
           >
-            Our team brings expertise and experience in both strategic consulting and technical implementation. 
-            We deliver comprehensive solutions that drive meaningful organizational change across diverse industries.
+            Paradigm offers a wide variety of scopes from strategy consulting to technical consulting projects, delivering comprehensive solutions that drive meaningful organizational change.
           </motion.p>
         </motion.div>
 
-        {/* Combined Projects Section */}
+        {/* Our Services Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="flex justify-center mb-16"
+        >
+          <div className="relative max-w-6xl w-full">
+            <Image
+              src="/OurServuces.png"
+              alt="Our Services"
+              width={1200}
+              height={800}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
+        </motion.div>
+
+        {/* Services Sections */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,9 +93,9 @@ const Services = () => {
               viewport={{ once: true }}
               className="text-center"
             >
-              <h3 className="text-2xl font-bold mb-4 text-gray-900 font-playfair">Strategy Projects</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 font-playfair">Strategic Consulting</h3>
               <Image
-                src="/StrategyClients.png"
+                src="/StratClients.png"
                 alt="Strategy Clients"
                 width={600}
                 height={400}
@@ -71,7 +111,7 @@ const Services = () => {
             >
               <h3 className="text-2xl font-bold mb-4 text-gray-900 font-playfair">Technical Consulting</h3>
               <Image
-                src="/TechnicalClients.png"
+                src="/TechClients.png"
                 alt="Technical Clients"
                 width={600}
                 height={400}
@@ -80,60 +120,6 @@ const Services = () => {
             </motion.div>
           </div>
 
-          {/* Combined Capabilities */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="bg-gray-50 rounded-2xl p-8"
-          >
-            <h3 className="text-3xl font-bold mb-8 text-center text-gray-900 font-playfair">Our Comprehensive Approach</h3>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h4 className="text-xl font-semibold mb-4 text-gray-900 font-playfair">Strategic Excellence</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-center text-gray-700 font-playfair">
-                    <div className="w-3 h-3 bg-blue-600 rounded-full mr-4"></div>
-                    Market Analysis & Competitive Intelligence
-                  </li>
-                  <li className="flex items-center text-gray-700 font-playfair">
-                    <div className="w-3 h-3 bg-blue-600 rounded-full mr-4"></div>
-                    Business Model Innovation
-                  </li>
-                  <li className="flex items-center text-gray-700 font-playfair">
-                    <div className="w-3 h-3 bg-blue-600 rounded-full mr-4"></div>
-                    Strategic Planning & Execution
-                  </li>
-                  <li className="flex items-center text-gray-700 font-playfair">
-                    <div className="w-3 h-3 bg-blue-600 rounded-full mr-4"></div>
-                    Organizational Development
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-xl font-semibold mb-4 text-gray-900 font-playfair">Technical Innovation</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-center text-gray-700 font-playfair">
-                    <div className="w-3 h-3 bg-purple-600 rounded-full mr-4"></div>
-                    Digital Transformation & Automation
-                  </li>
-                  <li className="flex items-center text-gray-700 font-playfair">
-                    <div className="w-3 h-3 bg-purple-600 rounded-full mr-4"></div>
-                    Data Analytics & AI Implementation
-                  </li>
-                  <li className="flex items-center text-gray-700 font-playfair">
-                    <div className="w-3 h-3 bg-purple-600 rounded-full mr-4"></div>
-                    Technology Architecture & Integration
-                  </li>
-                  <li className="flex items-center text-gray-700 font-playfair">
-                    <div className="w-3 h-3 bg-purple-600 rounded-full mr-4"></div>
-                    Cybersecurity & Risk Management
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

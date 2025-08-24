@@ -19,6 +19,20 @@ const Navigation = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const scrollToAbout = () => {
+    const element = document.getElementById('about')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const scrollToServices = () => {
+    const element = document.getElementById('services')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -51,23 +65,26 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             <motion.button
               whileHover={{ scale: 1.05 }}
+              onClick={scrollToAbout}
               className="text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium text-sm uppercase tracking-wide font-playfair"
             >
               ABOUT
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
+              onClick={scrollToServices}
               className="text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium text-sm uppercase tracking-wide font-playfair"
             >
               SERVICES
             </motion.button>
-            <motion.button
+            <motion.a
+              href="mailto:aezparadigm@gmail.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-sm font-medium text-sm uppercase tracking-wide transition-all duration-200 font-playfair"
             >
-              APPLY
-            </motion.button>
+              CONTACT US
+            </motion.a>
           </div>
         </div>
       </div>

@@ -4,8 +4,8 @@
 
 @layer base {
   body {
-    @apply bg-gray-900 text-gray-100;
-    font-family: var(--font-playfair), Georgia, serif;
+    @apply bg-white text-gray-900;
+    font-family: var(--font-nunito), sans-serif;
     scroll-behavior: smooth;
   }
 
@@ -13,8 +13,12 @@
     scroll-behavior: smooth;
   }
 
+  .font-nunito {
+    font-family: var(--font-nunito), sans-serif;
+  }
+
   .font-playfair {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: var(--font-playfair), serif;
   }
 }
 

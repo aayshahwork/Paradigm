@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Nunito, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito({ 
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-nunito'
+})
+
 const playfair = Playfair_Display({ 
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800', '900'],
@@ -22,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} ${playfair.variable}`}>{children}</body>
+      <body className={`${nunito.className} ${nunito.variable} ${playfair.variable}`}>{children}</body>
     </html>
   )
 }

@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'nunito': ['var(--font-nunito)', 'sans-serif'],
+        'playfair': ['var(--font-playfair)', 'serif'],
+      },
       colors: {
         primary: {
           50: '#eff6ff',
