@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, ArrowUp } from 'lucide-react'
+import { Mail, MapPin, ArrowUp } from 'lucide-react'
 import Image from 'next/image'
 
 const Footer = () => {
@@ -42,18 +42,11 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <div className="space-y-3">
               <a
-                href="mailto:hello@paradigmconsulting.com"
+                href="mailto:aezparadigm@gmail.com"
                 className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-200"
               >
                 <Mail className="w-4 h-4" />
-                hello@paradigmconsulting.com
-              </a>
-              <a
-                href="tel:+15106426000"
-                className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                <Phone className="w-4 h-4" />
-                +1 (510) 642-6000
+                aezparadigm@gmail.com
               </a>
               <a
                 href="https://maps.google.com/?q=UC+Berkeley"
@@ -93,7 +86,7 @@ const Footer = () => {
           className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
         >
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2024 Paradigm Consulting. All rights reserved.
+            © 2025 Paradigm Consulting. All rights reserved.
           </div>
           <motion.button
             whileHover={{ scale: 1.1 }}
