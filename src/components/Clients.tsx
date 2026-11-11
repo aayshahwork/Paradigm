@@ -30,9 +30,12 @@ export default function Clients() {
     <section id="clients" className="bg-paper py-24 md:py-36">
       <div className="container-site">
         <Reveal>
-          <p className="eyebrow mb-6 text-gold">Clients</p>
+          <p className="eyebrow mb-6 flex items-center gap-3 text-gold">
+            <span aria-hidden className="h-px w-10 bg-gold" />
+            Our Work
+          </p>
           <h2 className="font-serif text-4xl leading-[1.08] md:text-[56px]">
-            Previous clients &amp; <em>project scopes.</em>
+            Previous Clients &amp; Project Scopes
           </h2>
         </Reveal>
 

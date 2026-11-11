@@ -9,7 +9,7 @@ export default function ClientMarquee() {
       <div className="container-site flex flex-col items-start gap-6 md:flex-row md:items-center md:gap-12">
         <p className="eyebrow shrink-0 text-muted">Previous clients</p>
         <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-          <ul className="flex w-max animate-marquee items-center gap-16 hover:[animation-play-state:paused]">
+          <ul className="flex w-max animate-marquee items-center gap-16 hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">
             {loop.map((logo, i) => (
               <li key={i} aria-hidden={i >= logos.length} className="shrink-0">
                 <LogoImage

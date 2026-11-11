@@ -8,9 +8,12 @@ export default function Alumni() {
       <div className="container-site">
         <div className="grid gap-8 md:grid-cols-12">
           <Reveal className="md:col-span-6">
-            <p className="eyebrow mb-6 text-gold">Alumni Destinations</p>
+            <p className="eyebrow mb-6 flex items-center gap-3 text-gold">
+              <span aria-hidden className="h-px w-10 bg-gold" />
+              Where We Go
+            </p>
             <h2 className="font-serif text-4xl leading-[1.08] md:text-[56px]">
-              Where our alumni <em>have ended up.</em>
+              Alumni Destinations
             </h2>
           </Reveal>
           <Reveal delay={0.1} className="space-y-4 leading-relaxed text-muted md:col-span-5 md:col-start-8 md:self-end">

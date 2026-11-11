@@ -24,12 +24,12 @@ export default function Hero() {
         sizes="100vw"
         className="object-cover object-[50%_35%]"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/55 to-ink" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/25 to-ink" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/20 to-transparent" />
 
       <div className="container-site relative flex flex-1 flex-col justify-end pb-14 pt-32 md:pb-20">
         <motion.p {...fade(0.1)} className="eyebrow mb-6 flex items-center gap-3 text-gold-light">
-          <span className="h-px w-10 bg-gold-light" />
+          <span aria-hidden className="h-px w-10 bg-gold-light" />
           A branch of Alpha Epsilon Zeta
         </motion.p>
 
@@ -37,9 +37,7 @@ export default function Hero() {
           {...fade(0.2)}
           className="max-w-4xl font-serif text-[44px] font-normal leading-[1.02] tracking-[-0.01em] sm:text-6xl md:text-[84px]"
         >
-          Strategy and technology,
-          <br />
-          <em className="text-white/85">built at Berkeley.</em>
+          Paradigm Consulting
         </motion.h1>
 
         <motion.p {...fade(0.35)} className="mt-7 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
@@ -49,10 +47,10 @@ export default function Hero() {
 
         <motion.div {...fade(0.5)} className="mt-10 flex flex-wrap gap-3">
           <Link href="/team#contact" className="btn-light">
-            Work with us <ArrowRight size={16} />
+            Work With Us <ArrowRight size={16} aria-hidden />
           </Link>
           <Link href="/#services" className="btn-ghost-light">
-            Our services
+            Our Services
           </Link>
         </motion.div>
 

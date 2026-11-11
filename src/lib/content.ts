@@ -148,9 +148,9 @@ export const alumni: { group: string; logos: Logo[] }[] = [
   },
 ]
 
-export const team = [
-  { name: 'Om Awate', email: 'omawate1@berkeley.edu', image: '/faces/om.avif' },
+export const team: { name: string; email?: string; image: string }[] = [
   { name: 'Sreekar Nagulapalli', email: 'sreekar_nagul@berkeley.edu', image: '/faces/sreekar.avif' },
   { name: 'Aadi Agrawal', email: 'aadia12@berkeley.edu', image: '/faces/aadi.avif' },
-  { name: 'Sashank Gadisetti', email: 'sgadisetti@Berkeley.edu', image: '/faces/sashank.avif' },
+  { name: 'Gowri Biju', image: '/faces/gowri.avif' },
+  { name: 'Shivm Patel', image: '/faces/shivm.avif' },
 ]

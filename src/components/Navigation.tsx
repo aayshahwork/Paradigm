@@ -52,23 +52,25 @@ export default function Navigation() {
               solid ? 'bg-ink text-paper hover:bg-ink-700' : 'border border-white/50 hover:bg-white hover:text-ink'
             }`}
           >
-            Work with us
+            Work With Us
           </Link>
         </div>
 
         <button
           className="md:hidden"
           aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen((o) => !o)}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={22} aria-hidden /> : <Menu size={22} aria-hidden />}
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-rule bg-paper md:hidden">
+        <div id="mobile-menu" className="border-t border-rule bg-paper md:hidden">
           <div className="container-site flex flex-col py-4">
-            {[...links, { href: '/team#contact', label: 'Work with us' }].map((l) => (
+            {[...links, { href: '/team#contact', label: 'Work With Us' }].map((l) => (
               <Link
                 key={l.label}
                 href={l.href}

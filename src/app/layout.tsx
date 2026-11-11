@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { EB_Garamond, Inter } from 'next/font/google'
 import './globals.css'
 
@@ -22,10 +22,22 @@ export const metadata: Metadata = {
     'Paradigm Consulting, UC Berkeley, student consulting, strategy consulting, technology consulting, Alpha Epsilon Zeta',
 }
 
+export const viewport: Viewport = {
+  themeColor: '#0B1B33',
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${serif.variable} ${sans.variable}`}>{children}</body>
+      <body className={`${serif.variable} ${sans.variable}`}>
+        <a
+          href="#main"
+          className="sr-only z-[100] bg-ink px-4 py-3 text-sm text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Skip to content
+        </a>
+        {children}
+      </body>
     </html>
   )
 }

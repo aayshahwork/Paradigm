@@ -16,7 +16,7 @@ const cols = [
     title: 'Connect',
     links: [
       { href: '/team', label: 'Team' },
-      { href: '/team#contact', label: 'Work with us' },
+      { href: '/team#contact', label: 'Work With Us' },
       { href: `mailto:${EMAIL}?subject=Recruitment`, label: 'Recruitment' },
     ],
   },

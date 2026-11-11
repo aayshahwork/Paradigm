@@ -8,10 +8,14 @@ export default function About() {
       <div className="container-site">
         <div className="grid gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-6">
-            <p className="eyebrow mb-6 text-gold">About Paradigm</p>
-            <h2 className="font-serif text-4xl leading-[1.08] md:text-[56px]">
-              Student-run consulting at UC Berkeley <em>since 2003.</em>
-            </h2>
+            <p className="eyebrow mb-6 flex items-center gap-3 text-gold">
+              <span aria-hidden className="h-px w-10 bg-gold" />
+              Who We Are
+            </p>
+            <h2 className="font-serif text-4xl leading-[1.08] md:text-[56px]">About Paradigm</h2>
+            <p className="mt-4 font-serif text-2xl text-ink/70 md:text-[28px]">
+              Student-run consulting at UC Berkeley since 2003
+            </p>
           </Reveal>
           <Reveal delay={0.1} className="md:col-span-5 md:col-start-8 md:self-end">
             <p className="text-lg leading-relaxed text-ink/80">
@@ -54,13 +58,8 @@ export default function About() {
             {features.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.08}>
                 <div className="border-t border-rule py-7">
-                  <div className="flex gap-6">
-                    <span className="font-serif text-sm text-gold">0{i + 1}</span>
-                    <div>
-                      <h3 className="font-serif text-2xl">{p.title}</h3>
-                      <p className="mt-2 leading-relaxed text-muted">{p.body}</p>
-                    </div>
-                  </div>
+                  <h3 className="font-serif text-2xl">{p.title}</h3>
+                  <p className="mt-2 leading-relaxed text-muted">{p.body}</p>
                 </div>
               </Reveal>
             ))}

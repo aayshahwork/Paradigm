@@ -13,6 +13,27 @@
     font-family: var(--font-sans), system-ui, sans-serif;
   }
 
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  dd {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid #b8913a;
+    outline-offset: 3px;
+  }
+
   ::selection {
     background: #0b1b33;
     color: #f7f5f0;
