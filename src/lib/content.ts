@@ -151,6 +151,6 @@ export const alumni: { group: string; logos: Logo[] }[] = [
 export const team: { name: string; email?: string; image: string }[] = [
   { name: 'Sreekar Nagulapalli', email: 'sreekar_nagul@berkeley.edu', image: '/faces/sreekar.avif' },
   { name: 'Aadi Agrawal', email: 'aadia12@berkeley.edu', image: '/faces/aadi.avif' },
-  { name: 'Gowri Biju', image: '/faces/gowri.avif' },
-  { name: 'Shivm Patel', image: '/faces/shivm.avif' },
+  { name: 'Gowri Biju', email: 'gowrib@berkeley.edu', image: '/faces/gowri.avif' },
+  { name: 'Shivm Patel', email: 'shivmpatel@berkeley.edu', image: '/faces/shivm.avif' },
 ]
