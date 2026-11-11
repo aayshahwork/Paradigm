@@ -1,33 +1,31 @@
 import type { Metadata } from 'next'
-import { Nunito, Playfair_Display } from 'next/font/google'
+import { EB_Garamond, Inter } from 'next/font/google'
 import './globals.css'
 
-const nunito = Nunito({ 
+const serif = EB_Garamond({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-nunito'
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
 })
 
-const playfair = Playfair_Display({ 
+const sans = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-playfair'
+  variable: '--font-sans',
 })
 
 export const metadata: Metadata = {
-  title: 'Paradigm Consulting - UC Berkeley Student Consulting',
-  description: 'Strategic consulting services by UC Berkeley students. Specializing in strategic analysis, process optimization, and innovation strategy since 2000.',
-  keywords: 'consulting, UC Berkeley, strategic analysis, process optimization, innovation strategy, student consulting',
+  title: 'Paradigm Consulting | UC Berkeley',
+  description:
+    'Paradigm Consulting is the consulting arm of Alpha Epsilon Zeta at UC Berkeley, delivering strategy and technology engagements for companies including eBay, Visa, AWS, Dropbox and Coca-Cola.',
+  keywords:
+    'Paradigm Consulting, UC Berkeley, student consulting, strategy consulting, technology consulting, Alpha Epsilon Zeta',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${nunito.className} ${nunito.variable} ${playfair.variable}`}>{children}</body>
+    <html lang="en">
+      <body className={`${serif.variable} ${sans.variable}`}>{children}</body>
     </html>
   )
 }

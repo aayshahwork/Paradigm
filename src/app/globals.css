@@ -3,108 +3,71 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --coral-50: #fff5f5;
-    --coral-100: #ffe3e3;
-    --coral-200: #ffc9c9;
-    --coral-300: #ffa8a8;
-    --coral-400: #ff8787;
-    --coral-500: #ff6b6b;
-    --coral-600: #fa5252;
-    --coral-700: #f03e3e;
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
 
   body {
-    @apply bg-white text-gray-900;
-    font-family: var(--font-nunito), sans-serif;
-    scroll-behavior: smooth;
+    @apply bg-paper text-ink antialiased;
+    font-family: var(--font-sans), system-ui, sans-serif;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-
-  .font-nunito {
-    font-family: var(--font-nunito), sans-serif;
-  }
-
-  .font-playfair {
-    font-family: var(--font-playfair), serif;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-100;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-blue-500 rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-blue-600;
+  ::selection {
+    background: #0b1b33;
+    color: #f7f5f0;
   }
 }
 
 @layer components {
-  .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20;
-  }
-  
-  .glass-dark {
-    @apply bg-gray-900/80 backdrop-blur-md border border-gray-700/50;
-  }
-  
-  .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
-  }
-  
-  .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
-  }
-  
-  .container-custom {
-    @apply max-w-7xl mx-auto;
+  .container-site {
+    @apply mx-auto w-full max-w-site px-5 sm:px-8;
   }
 
-  /* Coral color utilities */
-  .text-coral-400 {
-    color: var(--coral-400);
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-eyebrow;
   }
 
-  .text-coral-500 {
-    color: var(--coral-500);
+  /* Double rule, echoing the two bars of the Paradigm wordmark */
+  .double-rule {
+    @apply relative h-[7px] w-full;
+    border-top: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
   }
 
-  .text-coral-600 {
-    color: var(--coral-600);
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-medium tracking-wide transition-colors duration-200;
+  }
+  .btn-light {
+    @apply btn bg-paper text-ink hover:bg-white;
+  }
+  .btn-ghost-light {
+    @apply btn border border-white/40 text-white hover:border-white hover:bg-white/10;
+  }
+  .btn-dark {
+    @apply btn bg-ink text-paper hover:bg-ink-700;
+  }
+  .btn-ghost-dark {
+    @apply btn border border-ink/25 text-ink hover:border-ink;
   }
 
-  .bg-coral-400 {
-    background-color: var(--coral-400);
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
   }
-
-  .bg-coral-500 {
-    background-color: var(--coral-500);
+  .link-underline:hover {
+    background-size: 100% 1px;
   }
+}
 
-  .bg-coral-600 {
-    background-color: var(--coral-600);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-
-  .border-coral-400 {
-    border-color: var(--coral-400);
-  }
-
-  .from-coral-400 {
-    --tw-gradient-from: var(--coral-400);
-  }
-
-  .to-coral-600 {
-    --tw-gradient-to: var(--coral-600);
+  .animate-marquee {
+    animation: none;
   }
 }

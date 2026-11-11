@@ -1,109 +1,86 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { Menu, X } from 'lucide-react'
+import Wordmark from './Wordmark'
 
-const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
+const links = [
+  { href: '/#about', label: 'About' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#clients', label: 'Clients' },
+  { href: '/#alumni', label: 'Alumni' },
+  { href: '/team', label: 'Team' },
+]
+
+export default function Navigation() {
   const pathname = usePathname()
+  const overHero = pathname === '/'
+  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const scrollToTop = () => {
-    if (pathname === '/contact') {
-      window.location.href = '/'
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  }
-
-  const handleAboutClick = () => {
-    if (pathname === '/contact') {
-      window.location.href = '/#about'
-    } else {
-      const element = document.getElementById('about')
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
-  }
-
-  const handleServicesClick = () => {
-    if (pathname === '/contact') {
-      window.location.href = '/#services'
-    } else {
-      const element = document.getElementById('services')
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
-  }
+  const solid = scrolled || !overHero || open
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white shadow-lg border-b border-gray-200' 
-          : 'bg-white'
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        solid ? 'border-b border-rule bg-paper/95 text-ink backdrop-blur' : 'text-white'
       }`}
     >
-      <div className="container-custom px-8 py-4">
-        <div className="flex items-center justify-between">
-          {/* Paradigm Logo in top left */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="cursor-pointer"
-            onClick={scrollToTop}
-          >
-            <Image
-              src="/Paradigm Logo.png"
-              alt="Paradigm Consulting"
-              width={160}
-              height={50}
-              className="h-10 w-auto"
-              priority
-            />
-          </motion.div>
+      <nav className="container-site flex h-[72px] items-center justify-between">
+        <Link href="/" aria-label="Paradigm Consulting home" onClick={() => setOpen(false)}>
+          <Wordmark />
+        </Link>
 
-          {/* Navigation Menu - simplified without CHALLENGE button */}
-          <div className="hidden md:flex items-center space-x-8">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              onClick={handleAboutClick}
-              className="text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium text-sm uppercase tracking-wide font-playfair"
-            >
-              ABOUT
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              onClick={handleServicesClick}
-              className="text-gray-700 hover:text-gray-900 transition-colors duration-200 font-medium text-sm uppercase tracking-wide font-playfair"
-            >
-              SERVICES
-            </motion.button>
-            <motion.a
-              href="/contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-sm font-medium text-sm uppercase tracking-wide transition-all duration-200 font-playfair"
-            >
-              CONTACT US
-            </motion.a>
+        <div className="hidden items-center gap-9 md:flex">
+          {links.map((l) => (
+            <Link key={l.href} href={l.href} className="link-underline text-[13px] font-medium tracking-wide">
+              {l.label}
+            </Link>
+          ))}
+          <Link
+            href="/team#contact"
+            className={`px-4 py-2 text-[13px] font-medium tracking-wide transition-colors ${
+              solid ? 'bg-ink text-paper hover:bg-ink-700' : 'border border-white/50 hover:bg-white hover:text-ink'
+            }`}
+          >
+            Work with us
+          </Link>
+        </div>
+
+        <button
+          className="md:hidden"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen((o) => !o)}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </nav>
+
+      {open && (
+        <div className="border-t border-rule bg-paper md:hidden">
+          <div className="container-site flex flex-col py-4">
+            {[...links, { href: '/team#contact', label: 'Work with us' }].map((l) => (
+              <Link
+                key={l.label}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="border-b border-rule py-4 font-serif text-2xl last:border-0"
+              >
+                {l.label}
+              </Link>
+            ))}
           </div>
         </div>
-      </div>
-    </motion.nav>
+      )}
+    </header>
   )
 }
-
-export default Navigation

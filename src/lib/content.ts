@@ -1,0 +1,156 @@
+// Single source of truth for site facts. All numbers and labels match the
+// original Paradigm site exactly; this redesign changes presentation only.
+
+export const EMAIL = 'aezparadigm@gmail.com'
+
+export type Stat = { value: string; label: string }
+
+export const heroStats: Stat[] = [
+  { value: '2003', label: 'Founded' },
+  { value: '35+', label: 'Projects Completed' },
+  { value: '<10%', label: 'Acceptance Rate' },
+]
+
+export const aboutStats: Stat[] = [
+  { value: '4.91/5', label: 'Client Satisfaction' },
+  { value: '<10%', label: 'Acceptance' },
+  { value: '40+', label: 'Members' },
+  { value: '35+', label: 'Projects' },
+  { value: '100%', label: 'Placement' },
+]
+
+export const alumniStats: Stat[] = [
+  { value: '100%', label: 'Full-Time Job Placement' },
+  { value: '$500M+', label: 'Alumni-Founded Startups' },
+  { value: '200+', label: 'Total Alumni' },
+]
+
+export const footerStats: Stat[] = [
+  { value: '2003', label: 'Founded' },
+  { value: '35+', label: 'Projects' },
+  { value: '<10%', label: 'Acceptance' },
+  { value: '100%', label: 'Placement' },
+]
+
+export const features = [
+  {
+    title: 'Multidisciplinary Team',
+    body: "Berkeley's brightest students from diverse majors including Business, Engineering, Computer Science, Economics, and more, bringing unique perspectives to every project.",
+  },
+  {
+    title: '1,000+ Hours',
+    body: 'Dedicated work per 10-12 week engagement, ensuring thorough research, comprehensive analysis, and actionable recommendations that drive real business impact.',
+  },
+  {
+    title: 'Proven Results',
+    body: '4.91/5 client satisfaction rating and 200+ alumni network spanning top consulting firms, technology companies, and Fortune 500 organizations worldwide.',
+  },
+]
+
+export const services = {
+  strategy: {
+    title: 'Strategy',
+    items: [
+      'Go-To-Market Strategy',
+      'Business Model Innovation',
+      'Customer Segmentation',
+      'Cost Reduction',
+      'Market Research',
+      'Competitive Analysis',
+    ],
+  },
+  technology: {
+    title: 'Technology',
+    items: [
+      'Custom Software Development',
+      'Legacy System Modernization',
+      'UI/UX Design',
+      'AI/ML Integration',
+      'Cloud Architecture/Migration',
+      'Alternative Analytics',
+    ],
+  },
+}
+
+// Logos cut from the club's original client and alumni graphics.
+// w/h are the PNG's pixel size, used to balance visual weight.
+export type Logo = { name: string; src: string; w: number; h: number }
+const L = (name: string, file: string, w: number, h: number): Logo => ({ name, src: `/logos/${file}.png`, w, h })
+
+export const strategyClients: Logo[] = [
+  L('eBay', 'ebay', 309, 123),
+  L('Juniper Networks', 'juniper', 339, 98),
+  L('Bose', 'bose', 756, 102),
+  L('Honeywell', 'honeywell', 390, 80),
+  L('Dropbox', 'dropbox', 310, 68),
+]
+
+export const technologyClients: Logo[] = [
+  L('Roblox', 'roblox', 399, 76),
+  L('AWS', 'aws', 296, 181),
+  L('Coca-Cola', 'coca-cola', 342, 118),
+  L('Visa', 'visa', 385, 131),
+  L('Janssen', 'janssen', 548, 237),
+]
+
+export const alumni: { group: string; logos: Logo[] }[] = [
+  {
+    group: 'Consulting',
+    logos: [L('McKinsey & Company', 'mckinsey', 204, 68), L('Bain & Company', 'bain', 150, 92)],
+  },
+  {
+    group: 'Finance',
+    logos: [
+      L('Goldman Sachs', 'goldman-sachs', 166, 76),
+      L('J.P. Morgan', 'jp-morgan', 234, 54),
+      L('Morgan Stanley', 'morgan-stanley', 108, 106),
+      L('Centerview Partners', 'centerview', 244, 47),
+      L('Lazard', 'lazard', 238, 50),
+      L('Moelis', 'moelis', 222, 60),
+      L('Raine', 'raine', 234, 52),
+      L('Blackstone', 'blackstone', 180, 76),
+      L('BlackRock', 'blackrock', 248, 42),
+      L('Citadel', 'citadel', 256, 36),
+      L('TPG', 'tpg', 172, 76),
+      L('Carlyle', 'carlyle', 252, 40),
+      L('Point72', 'point72', 164, 80),
+    ],
+  },
+  {
+    group: 'Technology',
+    logos: [
+      L('Google', 'google', 200, 73),
+      L('Apple', 'apple', 94, 110),
+      L('Meta', 'meta', 237, 55),
+      L('Microsoft', 'microsoft', 233, 58),
+      L('Salesforce', 'salesforce', 138, 100),
+      L('LinkedIn', 'linkedin', 224, 64),
+      L('PayPal', 'paypal', 219, 64),
+      L('Stripe', 'stripe', 172, 74),
+      L('Coinbase', 'coinbase', 241, 49),
+      L('Snowflake', 'snowflake', 226, 61),
+      L('Tesla', 'tesla', 252, 39),
+      L('SpaceX', 'spacex', 242, 37),
+      L('DoorDash', 'doordash', 256, 40),
+      L('Slack', 'slack', 221, 60),
+    ],
+  },
+  {
+    group: 'Graduate & Ventures',
+    logos: [
+      L('Stanford', 'stanford', 78, 114),
+      L('MIT', 'mit', 160, 86),
+      L('Harvard Business School', 'harvard-business-school', 208, 68),
+      L('University of Cambridge', 'cambridge', 116, 106),
+      L('UCSF', 'ucsf', 165, 84),
+      L('Y Combinator', 'y-combinator', 110, 109),
+    ],
+  },
+]
+
+export const team = [
+  { name: 'Om Awate', email: 'omawate1@berkeley.edu', image: '/faces/om.avif' },
+  { name: 'Sreekar Nagulapalli', email: 'sreekar_nagul@berkeley.edu', image: '/faces/sreekar.avif' },
+  { name: 'Aadi Agrawal', email: 'aadia12@berkeley.edu', image: '/faces/aadi.avif' },
+  { name: 'Sashank Gadisetti', email: 'sgadisetti@Berkeley.edu', image: '/faces/sashank.avif' },
+]
