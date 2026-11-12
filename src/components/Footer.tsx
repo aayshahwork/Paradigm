@@ -38,10 +38,6 @@ export default function Footer() {
         </div>
       </div>
 
-      <p aria-hidden className="cell overflow-hidden border-b border-line py-8 font-serif text-[13vw] italic leading-[0.9] text-paper/90 md:text-[7.5vw]">
-        Built at Berkeley.
-      </p>
-
       <div className="cell flex flex-col gap-3 py-8 text-xs text-paper/55 md:flex-row md:justify-between">
         <p>&copy; {new Date().getFullYear()} Paradigm Consulting. All rights reserved.</p>
         <p className="max-w-xl md:text-right">
