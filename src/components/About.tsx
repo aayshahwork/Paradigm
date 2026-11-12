@@ -1,4 +1,6 @@
 import Reveal from './Reveal'
+import SectionLabel from './SectionLabel'
+import { sectionNumber } from '@/lib/sections'
 import { firmStats } from '@/lib/content'
 
 export default function About() {
@@ -7,6 +9,7 @@ export default function About() {
       <div className="grid md:grid-cols-[minmax(0,28%)_1fr]">
         <div className="cell border-b border-line py-10 md:border-b-0 md:border-r md:py-14">
           <Reveal>
+            <SectionLabel n={sectionNumber('about')} label="Who we are" />
             <h2 id="about-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
               About
             </h2>

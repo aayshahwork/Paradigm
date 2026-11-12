@@ -1,6 +1,9 @@
 import Hero from '@/components/Hero'
 import About from '@/components/About'
-import Explore from '@/components/Explore'
+import Clients from '@/components/Clients'
+import Services from '@/components/Services'
+import Alumni from '@/components/Alumni'
+import Team from '@/components/Team'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
@@ -11,7 +14,10 @@ export default function Home() {
         <Hero />
         <div className="mx-auto w-full max-w-site">
           <About />
-          <Explore />
+          <Clients />
+          <Services />
+          <Alumni />
+          <Team />
         </div>
         <Contact />
       </main>

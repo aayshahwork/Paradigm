@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { EMAIL } from '@/lib/content'
 
@@ -27,9 +26,9 @@ export default function Hero() {
           <a href={`mailto:${EMAIL}?subject=Project%20inquiry`} className="btn-light">
             Work with us <ArrowRight size={16} aria-hidden />
           </a>
-          <Link href="/services" className="btn-ghost-light">
+          <a href="#services" className="btn-ghost-light">
             Our services
-          </Link>
+          </a>
         </div>
       </div>
     </section>

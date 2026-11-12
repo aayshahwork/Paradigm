@@ -1,32 +1,52 @@
 import Image from 'next/image'
 import Reveal from './Reveal'
+import SectionLabel from './SectionLabel'
 import { strategyClients, technologyClients, type Logo } from '@/lib/content'
+import { sectionNumber } from '@/lib/sections'
 
-function Practice({ title, logos, divider }: { title: string; logos: Logo[]; divider?: boolean }) {
+// Infinite logo strip. The list is rendered twice and slid by half its width;
+// the copy is hidden from assistive tech so each client is announced once.
+function Marquee({ title, logos, reverse }: { title: string; logos: Logo[]; reverse?: boolean }) {
+  const row = (copy: boolean) => (
+    <ul aria-hidden={copy || undefined} className="flex shrink-0 gap-3 pr-3">
+      {logos.map((logo) => (
+        <li key={logo.name} className="flex h-24 w-48 shrink-0 items-center justify-center p-5 md:h-28 md:w-56">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logo.src} alt={copy ? '' : logo.name} className="logo-mono max-h-12 w-full max-w-[140px] object-contain opacity-80" />
+        </li>
+      ))}
+    </ul>
+  )
+  // Repeat enough times that a short list still overflows wide screens.
   return (
-    <div className={`border-line ${divider ? 'border-t md:border-l md:border-t-0' : ''}`}>
-      <h2 className="cell border-b border-line py-4 text-sm font-medium text-paper/70">{title}</h2>
-      <ul className="grid grid-cols-2 gap-3 p-4 sm:grid-cols-3 md:p-6">
-        {logos.map((logo) => (
-          <li key={logo.name} className="flex h-28 items-center justify-center rounded-sm bg-white p-5">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={logo.src} alt={logo.name} className="max-h-12 w-full max-w-[140px] object-contain" />
-          </li>
-        ))}
-      </ul>
+    <div className="border-t border-line">
+      <h3 className="cell py-4 font-mono text-xs uppercase tracking-[0.18em] text-paper/55">{title}</h3>
+      <div className="group overflow-hidden pb-6 [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]">
+        <div
+          className={`flex w-max animate-marquee group-hover:[animation-play-state:paused] ${
+            reverse ? '[animation-direction:reverse]' : ''
+          }`}
+        >
+          {row(false)}
+          {row(true)}
+          {row(true)}
+          {row(true)}
+        </div>
+      </div>
     </div>
   )
 }
 
 export default function Clients() {
   return (
-    <section aria-labelledby="clients-title" className="border-b border-line">
+    <section id="clients" aria-labelledby="clients-title" className="border-b border-line">
       <div className="grid md:grid-cols-[minmax(0,42%)_1fr]">
         <div className="cell flex flex-col border-b border-line py-10 md:border-b-0 md:border-r md:py-14">
           <Reveal>
-            <h1 id="clients-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
+            <SectionLabel n={sectionNumber('clients')} label="Who we work with" />
+            <h2 id="clients-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
               Our Clients
-            </h1>
+            </h2>
             <p className="mt-8 max-w-sm text-lg leading-relaxed text-paper/75">
               Fortune 500 teams and fast-growing companies, across both practices.
             </p>
@@ -44,10 +64,8 @@ export default function Clients() {
         </div>
       </div>
 
-      <div className="grid border-t border-line md:grid-cols-2">
-        <Practice title="Strategy" logos={strategyClients} />
-        <Practice title="Technology" logos={technologyClients} divider />
-      </div>
+      <Marquee title="Strategy" logos={strategyClients} />
+      <Marquee title="Technology" logos={technologyClients} reverse />
     </section>
   )
 }

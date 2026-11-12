@@ -5,6 +5,8 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Reveal from './Reveal'
 import Tabs, { tabId } from './Tabs'
 import LogoImage from './LogoImage'
+import SectionLabel from './SectionLabel'
+import { sectionNumber } from '@/lib/sections'
 import { alumni, alumniStats } from '@/lib/content'
 
 const ALL = 'All'
@@ -30,13 +32,14 @@ export default function Alumni() {
   )
 
   return (
-    <section aria-labelledby="alumni-title" className="border-b border-line">
+    <section id="alumni" aria-labelledby="alumni-title" className="border-b border-line">
       <div className="grid md:grid-cols-[minmax(0,42%)_1fr]">
         <div className="cell border-b border-line py-10 md:border-b-0 md:border-r md:py-14">
           <Reveal>
-            <h1 id="alumni-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
+            <SectionLabel n={sectionNumber('alumni')} label="Where we go" />
+            <h2 id="alumni-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
               Alumni
-            </h1>
+            </h2>
           </Reveal>
         </div>
         <dl className="grid sm:grid-cols-3">

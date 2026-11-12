@@ -1,13 +1,6 @@
-import Link from 'next/link'
 import Logo from './Logo'
 import { EMAIL } from '@/lib/content'
-
-const sections = [
-  { href: '/clients', label: 'Clients' },
-  { href: '/services', label: 'Services' },
-  { href: '/alumni', label: 'Alumni' },
-  { href: '/team', label: 'Team' },
-]
+import { sections } from '@/lib/sections'
 
 export default function Footer() {
   return (
@@ -19,10 +12,10 @@ export default function Footer() {
             <p className="mt-4 text-sm text-paper/60">Alpha Epsilon Zeta &bull; UC Berkeley</p>
           </div>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3">
-            {sections.map((l) => (
-              <Link key={l.href} href={l.href} className="link-underline text-sm text-paper/80 hover:text-paper">
-                {l.label}
-              </Link>
+            {sections.map((s) => (
+              <a key={s.id} href={`#${s.id}`} className="link-underline text-sm text-paper/80 hover:text-paper">
+                {s.label}
+              </a>
             ))}
             <a href={`mailto:${EMAIL}`} className="link-underline text-sm text-paper/80 hover:text-paper">
               {EMAIL}

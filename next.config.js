@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
-    return [{ source: '/contact', destination: '/team', permanent: true }]
+    // The site used to have one page per section; send old links to the anchor.
+    return [
+      { source: '/contact', destination: '/#contact', permanent: true },
+      ...['clients', 'services', 'alumni', 'team'].map((s) => ({
+        source: `/${s}`,
+        destination: `/#${s}`,
+        permanent: true,
+      })),
+    ]
   },
 }
 
