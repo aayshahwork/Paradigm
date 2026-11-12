@@ -64,14 +64,14 @@ export default function PracticeSwitcher() {
   }
 
   return (
-    <section id="services" aria-labelledby="services-title" className="border-b border-line">
+    <section aria-labelledby="services-title" className="border-b border-line">
       <div className="grid border-b border-line md:grid-cols-[minmax(0,42%)_1fr]">
         <div className="cell py-10 md:border-r md:border-line md:py-14">
-          <Marker n="04" />
+          <Marker n="01" />
           <Reveal>
-            <h2 id="services-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
+            <h1 id="services-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
               Services
-            </h2>
+            </h1>
           </Reveal>
         </div>
         <div className="cell flex flex-col justify-end gap-6 pb-10 md:py-14">

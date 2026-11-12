@@ -1,15 +1,16 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, Briefcase, GraduationCap, Layers, Mail, Menu, Users, X, type LucideIcon } from 'lucide-react'
 import Wordmark from './Wordmark'
 import { EMAIL } from '@/lib/content'
 
 const links: { href: string; label: string; icon: LucideIcon }[] = [
-  { href: '/#clients', label: 'Clients', icon: Briefcase },
-  { href: '/#services', label: 'Services', icon: Layers },
-  { href: '/#alumni', label: 'Alumni', icon: GraduationCap },
+  { href: '/clients', label: 'Clients', icon: Briefcase },
+  { href: '/services', label: 'Services', icon: Layers },
+  { href: '/alumni', label: 'Alumni', icon: GraduationCap },
   { href: '/team', label: 'Team', icon: Users },
 ]
 
@@ -20,17 +21,20 @@ function RailLink({
   label,
   icon: Icon,
   accent = false,
+  active = false,
 }: {
   href: string
   label: string
   icon: LucideIcon
   accent?: boolean
+  active?: boolean
 }) {
   const cls = `group relative flex h-10 w-10 items-center justify-center transition-colors duration-200 ${
-    accent ? 'text-gold-light hover:text-paper' : 'text-paper/60 hover:text-paper'
+    accent || active ? 'text-gold-light hover:text-paper' : 'text-paper/60 hover:text-paper'
   }`
   const inner = (
     <>
+      {active && <span aria-hidden className="absolute -left-3 top-2 h-6 w-[2px] bg-gold-light" />}
       <Icon size={18} strokeWidth={1.5} aria-hidden />
       <span className="pointer-events-none absolute left-full ml-3 whitespace-nowrap border border-line bg-ink-900 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-paper/85 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
         {label}
@@ -42,7 +46,7 @@ function RailLink({
       {inner}
     </a>
   ) : (
-    <Link href={href} aria-label={label} className={cls}>
+    <Link href={href} aria-label={label} aria-current={active ? 'page' : undefined} className={cls}>
       {inner}
     </Link>
   )
@@ -50,6 +54,10 @@ function RailLink({
 
 export default function Navigation() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`)
+
+  useEffect(() => setOpen(false), [pathname])
 
   useEffect(() => {
     if (!open) return
@@ -68,7 +76,7 @@ export default function Navigation() {
         </Link>
         <nav aria-label="Main" className="flex flex-1 flex-col items-center justify-center gap-5">
           {links.map((l) => (
-            <RailLink key={l.href} {...l} />
+            <RailLink key={l.href} {...l} active={isActive(l.href)} />
           ))}
           <RailLink href={`mailto:${EMAIL}`} label="Email" icon={Mail} />
         </nav>
@@ -99,7 +107,10 @@ export default function Navigation() {
                   <Link
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between border-b border-line py-4 font-serif text-2xl"
+                    aria-current={isActive(l.href) ? 'page' : undefined}
+                    className={`flex items-center justify-between border-b border-line py-4 font-serif text-2xl ${
+                      isActive(l.href) ? 'text-gold-light' : ''
+                    }`}
                   >
                     {l.label}
                     <l.icon size={18} strokeWidth={1.5} aria-hidden className="text-paper/50" />

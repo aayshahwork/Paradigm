@@ -1,8 +1,6 @@
 import Hero from '@/components/Hero'
 import About from '@/components/About'
-import Clients from '@/components/Clients'
-import PracticeSwitcher from '@/components/PracticeSwitcher'
-import Alumni from '@/components/Alumni'
+import Explore from '@/components/Explore'
 import CallToAction from '@/components/CallToAction'
 import Footer from '@/components/Footer'
 
@@ -12,10 +10,8 @@ export default function Home() {
       <main id="main">
         <Hero />
         <About />
-        <Clients />
-        <PracticeSwitcher />
-        <Alumni />
-        <CallToAction />
+        <Explore />
+        <CallToAction n="04" />
       </main>
       <Footer />
     </>

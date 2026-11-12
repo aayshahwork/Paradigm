@@ -17,11 +17,11 @@ const paths = [
   },
 ]
 
-export default function CallToAction() {
+export default function CallToAction({ n = '02' }: { n?: string }) {
   return (
     <section aria-label="Get in touch" className="border-b border-line">
       <div className="cell border-b border-line py-4">
-        <Marker n="06" label="Get in touch" />
+        <Marker n={n} label="Get in touch" />
       </div>
       <div className="grid md:grid-cols-2">
         {paths.map((p, i) => (

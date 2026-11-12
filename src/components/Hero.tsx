@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Marker from './Marker'
@@ -57,9 +58,9 @@ export default function Hero() {
               <a href={`mailto:${EMAIL}?subject=Project%20inquiry`} className="btn-light">
                 Work with us <ArrowRight size={16} aria-hidden />
               </a>
-              <a href="#services" className="btn-ghost-light">
+              <Link href="/services" className="btn-ghost-light">
                 Our services
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

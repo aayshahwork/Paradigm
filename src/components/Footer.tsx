@@ -3,9 +3,9 @@ import Wordmark from './Wordmark'
 import { EMAIL } from '@/lib/content'
 
 const sections = [
-  { href: '/#clients', label: 'Clients' },
-  { href: '/#services', label: 'Services' },
-  { href: '/#alumni', label: 'Alumni' },
+  { href: '/clients', label: 'Clients' },
+  { href: '/services', label: 'Services' },
+  { href: '/alumni', label: 'Alumni' },
   { href: '/team', label: 'Team' },
 ]
 

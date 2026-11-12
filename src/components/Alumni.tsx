@@ -31,14 +31,14 @@ export default function Alumni() {
   )
 
   return (
-    <section id="alumni" aria-labelledby="alumni-title" className="border-b border-line">
+    <section aria-labelledby="alumni-title" className="border-b border-line">
       <div className="grid md:grid-cols-[minmax(0,42%)_1fr]">
         <div className="cell border-b border-line py-10 md:border-b-0 md:border-r md:py-14">
-          <Marker n="05" />
+          <Marker n="01" />
           <Reveal>
-            <h2 id="alumni-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
+            <h1 id="alumni-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
               Alumni
-            </h2>
+            </h1>
           </Reveal>
         </div>
         <dl className="grid sm:grid-cols-3">
