@@ -1,7 +1,7 @@
 import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Explore from '@/components/Explore'
-import CallToAction from '@/components/CallToAction'
+import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -9,9 +9,11 @@ export default function Home() {
     <>
       <main id="main">
         <Hero />
-        <About />
-        <Explore />
-        <CallToAction n="04" />
+        <div className="mx-auto w-full max-w-site">
+          <About />
+          <Explore />
+        </div>
+        <Contact />
       </main>
       <Footer />
     </>

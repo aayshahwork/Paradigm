@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import Alumni from '@/components/Alumni'
-import CallToAction from '@/components/CallToAction'
+import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Alumni | Paradigm Consulting',
+  title: 'Alumni',
   description: 'Where Paradigm alumni work: top consulting, finance and technology firms, leading graduate programs and startups.',
 }
 
@@ -12,8 +12,10 @@ export default function AlumniPage() {
   return (
     <>
       <main id="main">
-        <Alumni />
-        <CallToAction />
+        <div className="mx-auto w-full max-w-site">
+          <Alumni />
+        </div>
+        <Contact />
       </main>
       <Footer />
     </>

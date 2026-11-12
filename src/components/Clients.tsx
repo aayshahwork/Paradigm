@@ -1,22 +1,16 @@
 import Image from 'next/image'
 import Reveal from './Reveal'
-import Marker from './Marker'
-import LogoImage from './LogoImage'
 import { strategyClients, technologyClients, type Logo } from '@/lib/content'
 
 function Practice({ title, logos, divider }: { title: string; logos: Logo[]; divider?: boolean }) {
   return (
     <div className={`border-line ${divider ? 'border-t md:border-l md:border-t-0' : ''}`}>
-      <h2 className="cell border-b border-line py-4 font-mono text-xs uppercase tracking-[0.18em] text-paper/55">
-        {title}
-      </h2>
-      <ul className="grid grid-cols-2 overflow-hidden sm:grid-cols-3">
+      <h2 className="cell border-b border-line py-4 text-sm font-medium text-paper/70">{title}</h2>
+      <ul className="grid grid-cols-2 gap-3 p-4 sm:grid-cols-3 md:p-6">
         {logos.map((logo) => (
-          <li
-            key={logo.name}
-            className="-mb-px -mr-px flex h-32 items-center justify-center border-b border-r border-line px-4"
-          >
-            <LogoImage logo={logo} base={34} maxWidth={130} className="logo-mono opacity-80" />
+          <li key={logo.name} className="flex h-28 items-center justify-center rounded-sm bg-white p-5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={logo.src} alt={logo.name} className="max-h-12 w-full max-w-[140px] object-contain" />
           </li>
         ))}
       </ul>
@@ -29,7 +23,6 @@ export default function Clients() {
     <section aria-labelledby="clients-title" className="border-b border-line">
       <div className="grid md:grid-cols-[minmax(0,42%)_1fr]">
         <div className="cell flex flex-col border-b border-line py-10 md:border-b-0 md:border-r md:py-14">
-          <Marker n="01" />
           <Reveal>
             <h1 id="clients-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
               Our Clients

@@ -1,5 +1,4 @@
 import Reveal from './Reveal'
-import Marker from './Marker'
 import { firmStats } from '@/lib/content'
 
 export default function About() {
@@ -7,7 +6,6 @@ export default function About() {
     <section id="about" aria-labelledby="about-title" className="border-b border-line">
       <div className="grid md:grid-cols-[minmax(0,28%)_1fr]">
         <div className="cell border-b border-line py-10 md:border-b-0 md:border-r md:py-14">
-          <Marker n="02" />
           <Reveal>
             <h2 id="about-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
               About

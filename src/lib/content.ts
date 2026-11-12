@@ -1,7 +1,8 @@
 // Single source of truth for site facts. All numbers match the original
 // Paradigm site; this redesign changes presentation only.
 
-export const EMAIL = 'aezparadigm@gmail.com'
+export const EMAIL = 'aezberkeley@gmail.com'
+export const SITE_URL = 'https://berkeleyparadigm.org'
 
 export type Stat = { value: string; label: string }
 
@@ -9,7 +10,6 @@ export type Stat = { value: string; label: string }
 export const firmStats: Stat[] = [
   { value: '4.91/5', label: 'Average client satisfaction across engagements' },
   { value: '35+', label: 'Strategy and technology projects delivered' },
-  { value: '<10%', label: 'Of applicants accepted each recruiting cycle' },
   { value: '2003', label: 'Year founded as a branch of Alpha Epsilon Zeta' },
 ]
 
@@ -19,27 +19,65 @@ export const alumniStats: Stat[] = [
   { value: '200+', label: 'Total Alumni' },
 ]
 
-export const services = {
+export type Service = { name: string; description: string }
+
+export const services: Record<'strategy' | 'technology', { title: string; items: Service[] }> = {
   strategy: {
     title: 'Strategy',
     items: [
-      'Go-To-Market Strategy',
-      'Business Model Innovation',
-      'Customer Segmentation',
-      'Cost Reduction',
-      'Market Research',
-      'Competitive Analysis',
+      {
+        name: 'Go-To-Market Strategy',
+        description: 'Launch plans covering target segments, positioning, pricing and channels, ready for your team to execute.',
+      },
+      {
+        name: 'Business Model Innovation',
+        description: 'New revenue models and partnerships, tested against market data and your unit economics.',
+      },
+      {
+        name: 'Customer Segmentation',
+        description: 'Data-driven customer groups with the needs and behaviors that set them apart, and how to reach each one.',
+      },
+      {
+        name: 'Cost Reduction',
+        description: 'A review of spend and operations that identifies savings and a prioritized plan to capture them.',
+      },
+      {
+        name: 'Market Research',
+        description: 'Primary and secondary research that sizes the opportunity and answers the questions behind your decision.',
+      },
+      {
+        name: 'Competitive Analysis',
+        description: 'A clear view of competitors\u2019 products, pricing and positioning, and where you can differentiate.',
+      },
     ],
   },
   technology: {
     title: 'Technology',
     items: [
-      'Custom Software Development',
-      'Legacy System Modernization',
-      'UI/UX Design',
-      'AI/ML Integration',
-      'Cloud Architecture/Migration',
-      'Alternative Analytics',
+      {
+        name: 'Custom Software Development',
+        description: 'Web and internal tools built to your requirements, delivered with documentation and a clean handoff.',
+      },
+      {
+        name: 'Legacy System Modernization',
+        description: 'Migration plans and rebuilds that move aging systems to maintainable, modern stacks.',
+      },
+      {
+        name: 'UI/UX Design',
+        description: 'User research, wireframes and tested interface designs your engineers can build from.',
+      },
+      {
+        name: 'AI/ML Integration',
+        description: 'Practical machine learning and AI features added to your product or workflow, from prototype to deployment.',
+      },
+      {
+        name: 'Cloud Architecture/Migration',
+        description: 'Cloud designs and migrations that balance cost, performance and security.',
+      },
+      {
+        name: 'Alternative Analytics',
+        description: 'Analysis of non-traditional data sources to surface insights that standard reporting misses.',
+      },
     ],
   },
 }
@@ -48,21 +86,23 @@ export const services = {
 // w/h are the PNG's pixel size, used to balance visual weight.
 export type Logo = { name: string; src: string; w: number; h: number }
 const L = (name: string, file: string, w: number, h: number): Logo => ({ name, src: `/logos/${file}.png`, w, h })
+// Full-color official SVGs for the client wall; w/h are the SVG viewBox.
+const C = (name: string, file: string, w: number, h: number): Logo => ({ name, src: `/logos/color/${file}.svg`, w, h })
 
 export const strategyClients: Logo[] = [
-  L('eBay', 'ebay', 309, 123),
-  L('Juniper Networks', 'juniper', 339, 98),
-  L('Bose', 'bose', 756, 102),
-  L('Honeywell', 'honeywell', 390, 80),
-  L('Dropbox', 'dropbox', 310, 68),
+  C('eBay', 'ebay', 1000, 400.75),
+  C('Juniper Networks', 'juniper', 718.2, 196.3),
+  C('Bose', 'bose', 215, 26.8),
+  C('Honeywell', 'honeywell', 677.9, 120.1),
+  C('Dropbox', 'dropbox', 1000, 196.9),
 ]
 
 export const technologyClients: Logo[] = [
-  L('Roblox', 'roblox', 399, 76),
-  L('AWS', 'aws', 296, 181),
-  L('Coca-Cola', 'coca-cola', 342, 118),
-  L('Visa', 'visa', 385, 131),
-  L('Janssen', 'janssen', 548, 237),
+  C('Roblox', 'roblox', 161.2, 28.1),
+  C('AWS', 'aws', 304, 182),
+  C('Coca-Cola', 'coca-cola', 615.1, 192.9),
+  C('Visa', 'visa', 1000, 323.7),
+  C('Janssen', 'janssen', 1126.7, 481.8),
 ]
 
 export const alumni: { group: string; logos: Logo[] }[] = [

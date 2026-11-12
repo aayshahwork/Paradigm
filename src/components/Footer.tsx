@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Wordmark from './Wordmark'
+import Logo from './Logo'
 import { EMAIL } from '@/lib/content'
 
 const sections = [
@@ -11,39 +11,31 @@ const sections = [
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="grid border-b border-line md:grid-cols-[minmax(0,42%)_1fr_1fr]">
-        <div className="cell py-10 md:border-r md:border-line md:py-12">
-          <Wordmark />
-          <p className="mt-6 text-sm text-paper/60">Alpha Epsilon Zeta &bull; UC Berkeley</p>
-        </div>
-        <div className="cell border-t border-line py-10 md:border-r md:border-t-0 md:py-12">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-paper/50">Sections</p>
-          <ul className="mt-5 space-y-3">
+    <footer className="border-t border-line">
+      <div className="mx-auto w-full max-w-site px-6 py-12 md:px-10">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <div>
+            <Logo height={40} />
+            <p className="mt-4 text-sm text-paper/60">Alpha Epsilon Zeta &bull; UC Berkeley</p>
+          </div>
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3">
             {sections.map((l) => (
-              <li key={l.label}>
-                <Link href={l.href} className="link-underline text-sm text-paper/80 hover:text-paper">
-                  {l.label}
-                </Link>
-              </li>
+              <Link key={l.href} href={l.href} className="link-underline text-sm text-paper/80 hover:text-paper">
+                {l.label}
+              </Link>
             ))}
-          </ul>
+            <a href={`mailto:${EMAIL}`} className="link-underline text-sm text-paper/80 hover:text-paper">
+              {EMAIL}
+            </a>
+          </nav>
         </div>
-        <div className="cell border-t border-line py-10 md:border-t-0 md:py-12">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-paper/50">Contact</p>
-          <a href={`mailto:${EMAIL}`} className="link-underline mt-5 inline-block text-sm text-paper/80 hover:text-paper">
-            {EMAIL}
-          </a>
-          <p className="mt-3 text-sm text-paper/60">Berkeley, California</p>
+        <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 text-xs text-paper/55 md:flex-row md:justify-between">
+          <p>&copy; {new Date().getFullYear()} Paradigm Consulting. All rights reserved.</p>
+          <p className="max-w-xl md:text-right">
+            Paradigm Consulting is a student group acting independently of the University of California. We take full
+            responsibility for our organization and this website.
+          </p>
         </div>
-      </div>
-
-      <div className="cell flex flex-col gap-3 py-8 text-xs text-paper/55 md:flex-row md:justify-between">
-        <p>&copy; {new Date().getFullYear()} Paradigm Consulting. All rights reserved.</p>
-        <p className="max-w-xl md:text-right">
-          Paradigm Consulting is a student group acting independently of the University of California. We take full
-          responsibility for our organization and this website.
-        </p>
       </div>
     </footer>
   )

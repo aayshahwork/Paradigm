@@ -27,7 +27,7 @@ const config: Config = {
         },
         gold: {
           DEFAULT: '#B8913A',
-          light: '#D9BC72',
+          light: '#FDB515',
         },
         rule: '#DCD7CB',
         // hairline grid on the dark page

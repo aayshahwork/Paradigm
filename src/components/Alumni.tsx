@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Reveal from './Reveal'
-import Marker from './Marker'
 import Tabs, { tabId } from './Tabs'
 import LogoImage from './LogoImage'
 import { alumni, alumniStats } from '@/lib/content'
@@ -34,7 +33,6 @@ export default function Alumni() {
     <section aria-labelledby="alumni-title" className="border-b border-line">
       <div className="grid md:grid-cols-[minmax(0,42%)_1fr]">
         <div className="cell border-b border-line py-10 md:border-b-0 md:border-r md:py-14">
-          <Marker n="01" />
           <Reveal>
             <h1 id="alumni-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
               Alumni

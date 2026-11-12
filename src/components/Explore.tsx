@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
-import Marker from './Marker'
 import { alumni, services, strategyClients, team, technologyClients } from '@/lib/content'
 
 // Counts come from the same data the pages render, so they can't drift.
@@ -26,12 +25,9 @@ const cells = [
 export default function Explore() {
   return (
     <section id="explore" aria-labelledby="explore-title" className="border-b border-line">
-      <div className="cell border-b border-line py-4">
-        <Marker n="03" label="Explore" />
-        <h2 id="explore-title" className="sr-only">
-          Explore the site
-        </h2>
-      </div>
+      <h2 id="explore-title" className="sr-only">
+        Explore the site
+      </h2>
       <ul className="grid sm:grid-cols-2">
         {cells.map((c, i) => (
           <li
