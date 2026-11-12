@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { EB_Garamond, Inter } from 'next/font/google'
 import './globals.css'
+import Navigation from '@/components/Navigation'
 
 const serif = EB_Garamond({
   subsets: ['latin'],
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0B1B33',
+  themeColor: '#07142A',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -32,11 +33,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${serif.variable} ${sans.variable}`}>
         <a
           href="#main"
-          className="sr-only z-[100] bg-ink px-4 py-3 text-sm text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+          className="sr-only z-[100] bg-paper px-4 py-3 text-sm text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
         >
           Skip to content
         </a>
-        {children}
+        <Navigation />
+        {/* Hairline frame: rail line on the left, gutter line on the right */}
+        <div className="md:pl-16">
+          <div className="lg:mr-12 lg:border-r lg:border-line">{children}</div>
+        </div>
       </body>
     </html>
   )

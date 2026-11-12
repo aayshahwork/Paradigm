@@ -1,71 +1,41 @@
-import Image from 'next/image'
 import Reveal from './Reveal'
-import { aboutStats, features } from '@/lib/content'
+import Marker from './Marker'
+import { firmStats } from '@/lib/content'
 
 export default function About() {
   return (
-    <section id="about" className="bg-paper py-24 md:py-36">
-      <div className="container-site">
-        <div className="grid gap-12 md:grid-cols-12 md:gap-16">
-          <Reveal className="md:col-span-6">
-            <p className="eyebrow mb-6 flex items-center gap-3 text-gold">
-              <span aria-hidden className="h-px w-10 bg-gold" />
-              Who We Are
-            </p>
-            <h2 className="font-serif text-4xl leading-[1.08] md:text-[56px]">About Paradigm</h2>
-            <p className="mt-4 font-serif text-2xl text-ink/70 md:text-[28px]">
-              Student-run consulting at UC Berkeley since 2003
-            </p>
-          </Reveal>
-          <Reveal delay={0.1} className="md:col-span-5 md:col-start-8 md:self-end">
-            <p className="text-lg leading-relaxed text-ink/80">
-              The premier student-run consulting organization at UC Berkeley, combining rigorous analytical frameworks
-              with cutting-edge technological expertise to deliver exceptional strategic and technical consulting
-              services.
-            </p>
+    <section id="about" aria-labelledby="about-title" className="border-b border-line">
+      <div className="grid md:grid-cols-[minmax(0,28%)_1fr]">
+        <div className="cell border-b border-line py-10 md:border-b-0 md:border-r md:py-14">
+          <Marker n="02" />
+          <Reveal>
+            <h2 id="about-title" className="mt-8 font-serif text-5xl leading-[0.9] md:text-[5vw]">
+              About
+            </h2>
           </Reveal>
         </div>
-
-        <Reveal delay={0.1}>
-          <dl className="mt-16 grid grid-cols-2 border-y border-rule sm:grid-cols-3 md:mt-20 lg:grid-cols-5">
-            {aboutStats.map((s, i) => (
-              <div
-                key={s.label}
-                className={`flex flex-col-reverse border-rule py-7 pr-4 ${i > 0 ? 'lg:border-l lg:pl-8' : ''} ${
-                  i % 2 === 1 ? 'border-l pl-5 sm:border-l-0 sm:pl-0' : ''
-                }`}
-              >
-                <dt className="eyebrow mt-2 text-muted">{s.label}</dt>
-                <dd className="font-serif text-4xl md:text-5xl">{s.value}</dd>
-              </div>
-            ))}
-          </dl>
+        <Reveal className="cell flex items-end py-10 md:py-14">
+          <p className="max-w-3xl text-xl leading-[1.45] tracking-[-0.01em] text-paper/85 md:text-[1.6vw]">
+            Paradigm is UC Berkeley&rsquo;s student-run strategy and technology consulting group. Multidisciplinary
+            teams put 1,000+ hours into every 10&ndash;12 week engagement, and hand off work clients can act on.
+          </p>
         </Reveal>
-
-        <div className="mt-20 grid gap-10 md:mt-24 md:grid-cols-12 md:gap-16">
-          <Reveal className="md:col-span-7">
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src="/whoweare.jpg"
-                alt="Paradigm members at Doe Library, UC Berkeley"
-                fill
-                sizes="(min-width: 768px) 58vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </Reveal>
-          <div className="md:col-span-5">
-            {features.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.08}>
-                <div className="border-t border-rule py-7">
-                  <h3 className="font-serif text-2xl">{p.title}</h3>
-                  <p className="mt-2 leading-relaxed text-muted">{p.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
       </div>
+
+      <dl className="grid grid-cols-2 border-t border-line lg:grid-cols-4">
+        {firmStats.map((s, i) => (
+          <Reveal
+            key={s.value}
+            delay={i * 0.06}
+            className={`cell flex flex-col-reverse justify-end py-10 md:py-14 ${i % 2 === 1 ? 'border-l border-line' : ''} ${
+              i > 1 ? 'border-t border-line lg:border-t-0' : ''
+            } ${i === 2 ? 'lg:border-l' : ''}`}
+          >
+            <dt className="mt-4 max-w-[22ch] text-sm leading-relaxed text-paper/65">{s.label}</dt>
+            <dd className="font-serif text-[44px] leading-[0.9] text-gold-light md:text-[3.6vw]">{s.value}</dd>
+          </Reveal>
+        ))}
+      </dl>
     </section>
   )
 }

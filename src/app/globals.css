@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply bg-paper text-ink antialiased;
+    @apply bg-ink-900 text-paper antialiased;
     font-family: var(--font-sans), system-ui, sans-serif;
   }
 
@@ -30,19 +30,28 @@
   }
 
   :focus-visible {
-    outline: 2px solid #b8913a;
+    outline: 2px solid #d9bc72;
     outline-offset: 3px;
   }
 
   ::selection {
-    background: #0b1b33;
-    color: #f7f5f0;
+    background: #d9bc72;
+    color: #07142a;
   }
 }
 
 @layer components {
   .container-site {
     @apply mx-auto w-full max-w-site px-5 sm:px-8;
+  }
+
+  /* section padding inside the hairline frame */
+  .cell {
+    @apply px-6 md:px-10;
+  }
+  /* white silhouette of a transparent logo PNG, for the dark page */
+  .logo-mono {
+    filter: brightness(0) invert(1);
   }
 
   .eyebrow {

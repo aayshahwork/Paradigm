@@ -11,6 +11,7 @@ const config: Config = {
       fontFamily: {
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       colors: {
         ink: {
@@ -29,6 +30,8 @@ const config: Config = {
           light: '#D9BC72',
         },
         rule: '#DCD7CB',
+        // hairline grid on the dark page
+        line: 'rgba(247, 245, 240, 0.09)',
         muted: '#5B6577',
       },
       letterSpacing: {

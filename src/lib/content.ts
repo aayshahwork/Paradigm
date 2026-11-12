@@ -1,50 +1,22 @@
-// Single source of truth for site facts. All numbers and labels match the
-// original Paradigm site exactly; this redesign changes presentation only.
+// Single source of truth for site facts. All numbers match the original
+// Paradigm site; this redesign changes presentation only.
 
 export const EMAIL = 'aezparadigm@gmail.com'
 
 export type Stat = { value: string; label: string }
 
-export const heroStats: Stat[] = [
-  { value: '2003', label: 'Founded' },
-  { value: '35+', label: 'Projects Completed' },
-  { value: '<10%', label: 'Acceptance Rate' },
-]
-
-export const aboutStats: Stat[] = [
-  { value: '4.91/5', label: 'Client Satisfaction' },
-  { value: '<10%', label: 'Acceptance' },
-  { value: '40+', label: 'Members' },
-  { value: '35+', label: 'Projects' },
-  { value: '100%', label: 'Placement' },
+// Shown once, in the About section.
+export const firmStats: Stat[] = [
+  { value: '4.91/5', label: 'Average client satisfaction across engagements' },
+  { value: '35+', label: 'Strategy and technology projects delivered' },
+  { value: '<10%', label: 'Of applicants accepted each recruiting cycle' },
+  { value: '2003', label: 'Year founded as a branch of Alpha Epsilon Zeta' },
 ]
 
 export const alumniStats: Stat[] = [
   { value: '100%', label: 'Full-Time Job Placement' },
   { value: '$500M+', label: 'Alumni-Founded Startups' },
   { value: '200+', label: 'Total Alumni' },
-]
-
-export const footerStats: Stat[] = [
-  { value: '2003', label: 'Founded' },
-  { value: '35+', label: 'Projects' },
-  { value: '<10%', label: 'Acceptance' },
-  { value: '100%', label: 'Placement' },
-]
-
-export const features = [
-  {
-    title: 'Multidisciplinary Team',
-    body: "Berkeley's brightest students from diverse majors including Business, Engineering, Computer Science, Economics, and more, bringing unique perspectives to every project.",
-  },
-  {
-    title: '1,000+ Hours',
-    body: 'Dedicated work per 10-12 week engagement, ensuring thorough research, comprehensive analysis, and actionable recommendations that drive real business impact.',
-  },
-  {
-    title: 'Proven Results',
-    body: '4.91/5 client satisfaction rating and 200+ alumni network spanning top consulting firms, technology companies, and Fortune 500 organizations worldwide.',
-  },
 ]
 
 export const services = {

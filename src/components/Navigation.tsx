@@ -1,88 +1,120 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { ArrowUpRight, Briefcase, GraduationCap, Layers, Mail, Menu, Users, X, type LucideIcon } from 'lucide-react'
 import Wordmark from './Wordmark'
+import { EMAIL } from '@/lib/content'
 
-const links = [
-  { href: '/#about', label: 'About' },
-  { href: '/#services', label: 'Services' },
-  { href: '/#clients', label: 'Clients' },
-  { href: '/#alumni', label: 'Alumni' },
-  { href: '/team', label: 'Team' },
+const links: { href: string; label: string; icon: LucideIcon }[] = [
+  { href: '/#clients', label: 'Clients', icon: Briefcase },
+  { href: '/#services', label: 'Services', icon: Layers },
+  { href: '/#alumni', label: 'Alumni', icon: GraduationCap },
+  { href: '/team', label: 'Team', icon: Users },
 ]
 
+const contactHref = `mailto:${EMAIL}?subject=Project%20inquiry`
+
+function RailLink({
+  href,
+  label,
+  icon: Icon,
+  accent = false,
+}: {
+  href: string
+  label: string
+  icon: LucideIcon
+  accent?: boolean
+}) {
+  const cls = `group relative flex h-10 w-10 items-center justify-center transition-colors duration-200 ${
+    accent ? 'text-gold-light hover:text-paper' : 'text-paper/60 hover:text-paper'
+  }`
+  const inner = (
+    <>
+      <Icon size={18} strokeWidth={1.5} aria-hidden />
+      <span className="pointer-events-none absolute left-full ml-3 whitespace-nowrap border border-line bg-ink-900 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-paper/85 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+        {label}
+      </span>
+    </>
+  )
+  return href.startsWith('mailto:') ? (
+    <a href={href} aria-label={label} className={cls}>
+      {inner}
+    </a>
+  ) : (
+    <Link href={href} aria-label={label} className={cls}>
+      {inner}
+    </Link>
+  )
+}
+
 export default function Navigation() {
-  const pathname = usePathname()
-  const overHero = pathname === '/'
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  const solid = scrolled || !overHero || open
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [open])
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        solid ? 'border-b border-rule bg-paper/95 text-ink backdrop-blur' : 'text-white'
-      }`}
-    >
-      <nav className="container-site flex h-[72px] items-center justify-between">
-        <Link href="/" aria-label="Paradigm Consulting home" onClick={() => setOpen(false)}>
-          <Wordmark />
+    <>
+      {/* Desktop: fixed icon rail */}
+      <header className="fixed inset-y-0 left-0 z-40 hidden w-16 flex-col items-center border-r border-line bg-ink-900 py-6 md:flex">
+        <Link href="/" aria-label="Paradigm Consulting home" className="flex flex-col items-center gap-1.5">
+          <span aria-hidden className="double-rule !h-[5px] !w-7 !border-b-[1.5px] !border-t-[1.5px] text-paper" />
+          <span className="font-serif text-xl leading-none">P</span>
         </Link>
-
-        <div className="hidden items-center gap-9 md:flex">
+        <nav aria-label="Main" className="flex flex-1 flex-col items-center justify-center gap-5">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="link-underline text-[13px] font-medium tracking-wide">
-              {l.label}
-            </Link>
+            <RailLink key={l.href} {...l} />
           ))}
-          <Link
-            href="/team#contact"
-            className={`px-4 py-2 text-[13px] font-medium tracking-wide transition-colors ${
-              solid ? 'bg-ink text-paper hover:bg-ink-700' : 'border border-white/50 hover:bg-white hover:text-ink'
-            }`}
-          >
-            Work With Us
+          <RailLink href={`mailto:${EMAIL}`} label="Email" icon={Mail} />
+        </nav>
+        <RailLink href={contactHref} label="Work with us" icon={ArrowUpRight} accent />
+      </header>
+
+      {/* Mobile: top bar */}
+      <header className="sticky top-0 z-40 border-b border-line bg-ink-900/95 backdrop-blur md:hidden">
+        <div className="cell flex h-16 items-center justify-between">
+          <Link href="/" aria-label="Paradigm Consulting home" onClick={() => setOpen(false)}>
+            <Wordmark />
           </Link>
+          <button
+            className="-mr-2 p-2"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((o) => !o)}
+          >
+            {open ? <X size={22} aria-hidden /> : <Menu size={22} aria-hidden />}
+          </button>
         </div>
-
-        <button
-          className="md:hidden"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen((o) => !o)}
-        >
-          {open ? <X size={22} aria-hidden /> : <Menu size={22} aria-hidden />}
-        </button>
-      </nav>
-
-      {open && (
-        <div id="mobile-menu" className="border-t border-rule bg-paper md:hidden">
-          <div className="container-site flex flex-col py-4">
-            {[...links, { href: '/team#contact', label: 'Work With Us' }].map((l) => (
-              <Link
-                key={l.label}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="border-b border-rule py-4 font-serif text-2xl last:border-0"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </header>
+        {open && (
+          <nav id="mobile-menu" aria-label="Main" className="border-t border-line">
+            <ul className="cell py-2">
+              {links.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-between border-b border-line py-4 font-serif text-2xl"
+                  >
+                    {l.label}
+                    <l.icon size={18} strokeWidth={1.5} aria-hidden className="text-paper/50" />
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <a href={contactHref} className="flex items-center justify-between py-4 font-serif text-2xl text-gold-light">
+                  Work with us <ArrowUpRight size={18} aria-hidden />
+                </a>
+              </li>
+            </ul>
+          </nav>
+        )}
+      </header>
+    </>
   )
 }

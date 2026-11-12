@@ -1,73 +1,69 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { heroStats } from '@/lib/content'
+import Marker from './Marker'
+import { EMAIL } from '@/lib/content'
 
 export default function Hero() {
   const reduce = useReducedMotion()
   const fade = (delay: number) => ({
-    initial: reduce ? false : { opacity: 0, y: 24 },
+    initial: reduce ? false : { opacity: 0, y: 16 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] as const },
   })
 
   return (
-    <section id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink text-white">
+    <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden border-b border-line">
       <Image
         src="/ParadigmHome.jpg"
-        alt="Paradigm Consulting members at Sather Gate, UC Berkeley"
+        alt=""
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[50%_35%]"
+        className="object-cover object-[60%_35%] opacity-40"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/25 to-ink" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-ink/20 to-transparent" />
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ink-900 via-ink-900/85 to-ink-900/30" />
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink-900 via-transparent to-ink-900/60" />
 
-      <div className="container-site relative flex flex-1 flex-col justify-end pb-14 pt-32 md:pb-20">
-        <motion.p {...fade(0.1)} className="eyebrow mb-6 flex items-center gap-3 text-gold-light">
-          <span aria-hidden className="h-px w-10 bg-gold-light" />
-          A branch of Alpha Epsilon Zeta
-        </motion.p>
+      <div className="relative grid min-h-[calc(100svh-4rem)] md:min-h-[100svh] md:grid-cols-[minmax(0,46%)_1fr]">
+        <div className="flex flex-col justify-end md:border-r md:border-line">
+          <div className="cell border-b border-line py-4">
+            <Marker n="01" label="UC Berkeley · Since 2003" />
+          </div>
 
-        <motion.h1
-          {...fade(0.2)}
-          className="max-w-4xl font-serif text-[44px] font-normal leading-[1.02] tracking-[-0.01em] sm:text-6xl md:text-[84px]"
-        >
-          Paradigm Consulting
-        </motion.h1>
-
-        <motion.p {...fade(0.35)} className="mt-7 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
-          The premier consulting organization at UC Berkeley, providing top-tier strategic and technical consulting
-          services since 2003.
-        </motion.p>
-
-        <motion.div {...fade(0.5)} className="mt-10 flex flex-wrap gap-3">
-          <Link href="/team#contact" className="btn-light">
-            Work With Us <ArrowRight size={16} aria-hidden />
-          </Link>
-          <Link href="/#services" className="btn-ghost-light">
-            Our Services
-          </Link>
-        </motion.div>
-
-        <motion.dl
-          {...fade(0.7)}
-          className="mt-16 grid grid-cols-3 border-t border-white/20 md:mt-24 md:grid-cols-3"
-        >
-          {heroStats.map((s, i) => (
-            <div
-              key={s.label}
-              className={`flex flex-col-reverse py-6 pr-3 md:py-8 ${i > 0 ? 'border-l border-white/20 pl-4 md:pl-8' : ''}`}
+          <h1 id="hero-title" className="cell py-10 md:py-14">
+            <motion.span
+              {...fade(0.1)}
+              className="block font-sans text-[16vw] font-medium leading-[0.86] tracking-[-0.045em] md:text-[6.4vw]"
             >
-              <dt className="eyebrow mt-2 text-white/55">{s.label}</dt>
-              <dd className="font-serif text-[32px] md:text-5xl">{s.value}</dd>
+              Paradigm
+            </motion.span>
+            <motion.span
+              {...fade(0.2)}
+              className="mt-[0.06em] block font-serif text-[17vw] italic leading-[0.86] tracking-[-0.02em] md:text-[6.9vw]"
+            >
+              Consulting
+            </motion.span>
+          </h1>
+
+          <motion.div {...fade(0.32)} className="cell border-t border-line py-8 md:py-10">
+            <p className="max-w-md text-[17px] leading-relaxed text-paper/75 md:text-lg">
+              Berkeley students delivering strategy and technology engagements for companies including eBay, Visa and
+              AWS.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href={`mailto:${EMAIL}?subject=Project%20inquiry`} className="btn-light">
+                Work with us <ArrowRight size={16} aria-hidden />
+              </a>
+              <a href="#services" className="btn-ghost-light">
+                Our services
+              </a>
             </div>
-          ))}
-        </motion.dl>
+          </motion.div>
+        </div>
+        <div aria-hidden className="hidden md:block" />
       </div>
     </section>
   )
